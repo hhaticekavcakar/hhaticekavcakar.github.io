@@ -929,7 +929,7 @@ dd {
 
 @media (min-width: 900px) {
   .pair-grid::before {
-    margin-bottom: 1rem !important;
+    margin-bottom: 1.5rem !important;
   }
 }
 
@@ -1053,11 +1053,24 @@ dd {
 }
 
 /* =================================================================
-   Tablet (640px and wider)
+   Larger screens
+   The phone layout is the design. Tablets and desktops use the same
+   single-column composition, section order, card style and type,
+   only with a wider column, more spacing and larger sizes.
    ================================================================= */
+
+/* ---------- Tablet (640px and wider) ---------- */
 @media (min-width: 640px) {
+  :root {
+    --container: 46rem;   /* a centred column, like the phone layout */
+  }
+
   .container {
     padding: 0 2rem;
+  }
+
+  body {
+    font-size: 1.09rem;
   }
 
   .card {
@@ -1065,15 +1078,12 @@ dd {
   }
 
   .hero {
-    padding: 4.5rem 0 4rem;
+    padding: 4rem 0 3.5rem;
   }
 
-  /* Photo beside the title and name, aligned with the bottom of the name */
   .hero-identity {
-    flex-direction: row;
-    align-items: flex-end;
-    gap: 2rem;
-    margin-bottom: 2.5rem;
+    gap: 1.75rem;
+    margin-bottom: 2.25rem;
   }
 
   .hero-avatar {
@@ -1082,9 +1092,12 @@ dd {
     border-width: 4px;
   }
 
-  .hero-contact {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 1.5rem;
+  .hero-title {
+    font-size: 0.84rem;
+  }
+
+  .hero-intro {
+    font-size: 1.2rem;
   }
 
   .section {
@@ -1095,41 +1108,28 @@ dd {
     margin-bottom: 3.5rem;
   }
 
-  /* Title and location on one line from tablet size up */
-  .hero-location {
-    display: inline;
-  }
-
-  .hero-location::before {
-    content: "·";
-  }
-
-  .entry-facts div {
-    grid-template-columns: 10rem 1fr;
-    gap: 1rem;
-  }
-
-  .skills-grid,
-  .pair-grid,
-  .contact-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .cv-card {
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    padding: 2.5rem;
+  .about-card,
+  .card.entry {
+    padding: 2.25rem 2.5rem;
   }
 
   .project-body {
-    padding: 2.25rem;
+    padding: 2rem 2.25rem 2.25rem;
+  }
+
+  .cv-card {
+    padding: 2.5rem;
   }
 }
 
-/* =================================================================
-   Desktop (900px and wider)
-   ================================================================= */
+/* ---------- Desktop (900px and wider) ---------- */
 @media (min-width: 900px) {
+  :root {
+    --container: 52rem;   /* about 830 px wide, centred */
+    --header-height: 5rem;
+  }
+
+  /* Navigation links shown in the header instead of the menu button */
   .menu-toggle {
     display: none;
   }
@@ -1146,92 +1146,112 @@ dd {
 
   .site-nav ul {
     display: flex;
-    gap: 0.2rem;
+    gap: 0.1rem;
   }
 
   .site-nav a {
-    padding: 0.45rem 0.9rem;
+    padding: 0.45rem 0.8rem;
     font-size: 0.93rem;
   }
 
-  .hero {
-    padding: 6rem 0 5rem;
+  body {
+    font-size: 1.125rem;
   }
 
-  /* Below the name: introduction and buttons on the left,
-     contact details on the right */
-  .hero-text {
-    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
-    column-gap: 4rem;
+  .hero {
+    padding: 5.5rem 0 4.5rem;
   }
 
   .hero-identity {
-    grid-column: 1 / -1;
-    margin-bottom: 3rem;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-title {
+    font-size: 0.86rem;
+    margin-bottom: 1.4rem;
   }
 
   .hero-intro {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .button-row {
-    grid-column: 1;
-    grid-row: 3;
-    align-self: start;
+    max-width: 40rem;
+    font-size: 1.28rem;
+    margin-bottom: 2.5rem;
   }
 
   .hero-contact {
-    grid-column: 2;
-    grid-row: 2 / span 2;
-    align-self: start;
-    grid-template-columns: 1fr;
-    margin: 0;
-    padding: 0.25rem 0 0 2rem;
-    border-top: 0;
-    border-left: 1px solid var(--line);
+    padding-top: 1.75rem;
+    margin-bottom: 2.5rem;
+    gap: 0.9rem;
+  }
+
+  .hero-contact li {
+    font-size: 1.05rem;
+  }
+
+  .button {
+    min-height: 3.25rem;
+    padding: 0.7rem 1.75rem;
+    font-size: 1rem;
+  }
+
+  .button-small {
+    min-height: 2.6rem;
+    padding: 0.45rem 1.25rem;
+    font-size: 0.93rem;
   }
 
   .section {
-    padding: 2rem 0;
+    padding: 2.25rem 0;
   }
 
   .section > .container::before {
-    margin-bottom: 4rem;
+    margin-bottom: 4.5rem;
   }
 
-  .about-card {
-    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-    gap: 3rem;
-    padding: 2.75rem;
+  .section-title {
+    margin-bottom: 2rem;
   }
 
-  .about-focus {
-    padding-left: 3rem;
-    border-left: 1px solid var(--line);
-  }
-
-  .card.entry {
+  .card {
     padding: 2.5rem 2.75rem;
   }
 
-  /* Projects: image on the left, text on the right */
-  .project {
-    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  .about-card,
+  .card.entry {
+    padding: 2.75rem 3rem;
   }
 
-  /* Image sits as a framed panel at the top of the left column */
+  .project-list {
+    gap: 2rem;
+  }
+
+  /* Wider screens: slightly shorter image area, and the placeholder
+     drawing keeps a comfortable size instead of growing with the card */
   .project-media {
-    align-self: start;
-    aspect-ratio: 4 / 3;
-    margin: 2.25rem 0 2.25rem 2.25rem;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    overflow: hidden;
+    aspect-ratio: 16 / 9;
+  }
+
+  .project-illustration {
+    inset: 0;
+    margin: auto;
+    width: min(76%, 26rem);
+    height: 76%;
   }
 
   .project-body {
-    padding: 2.75rem 2.75rem 2.75rem 3rem;
+    padding: 2.5rem 3rem 2.75rem;
+  }
+
+  .cv-card {
+    padding: 3rem;
+  }
+
+  .contact-item {
+    padding: 1.5rem 1.75rem;
+  }
+
+  .site-footer {
+    margin-top: 3rem;
   }
 }
 
