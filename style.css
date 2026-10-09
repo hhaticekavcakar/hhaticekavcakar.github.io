@@ -732,13 +732,17 @@ dd {
   height: 76%;
 }
 
+.project-media {
+  background: #181224;
+}
+
 .project-media img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  background: #ffffff;
+  background: transparent;
 }
 
 /* Use class="contain" on an <img> to show the whole image without
